@@ -2,7 +2,7 @@
     <section id="hero" class="hero-section fade-up">
         <div class="overlay">
             <div class="content">
-                <h1>Панченко Глеб</h1>
+                <h1>Глеб Панченко</h1>
                 <h2>Unity Developer</h2>
                 <div class="scroll" @click="scrollToNext">
                     <svg class="t-cover__arrow-svg" style="fill:#ffffff;" width="38.417px" height="18.592px"
@@ -19,7 +19,7 @@
             <div class="state fade-up">
                 <img src="@/assets/avatar.jpg" alt="Глеб Панченко" class="avatar" />
                 <div class="text fade-up">
-                    <h2>Панченко Глеб</h2>
+                    <h2>Глеб Панченко</h2>
                     <p class="experience">Опыт разработки в Unity — 2+ года</p>
                 </div>
             </div>
