@@ -1,6 +1,6 @@
 <template>
-    <footer class="site-footer fade-up">
-        <div class="footer-content">
+    <footer class="site-footer">
+        <div class="footer-content fade-up">
             <p>
                 <a href="mailto:work.pgv28@gmail.com">work.pgv28@gmail.com</a> |
                 <a href="https://t.me/pgv_work" target="_blank">Telegram</a> |

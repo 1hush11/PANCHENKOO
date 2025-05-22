@@ -1,6 +1,6 @@
 <template>
-    <section id="hero" class="hero-section fade-up">
-        <div class="overlay">
+    <section id="hero" class="hero-section">
+        <div class="overlay fade-up">
             <div class="content">
                 <h1>Глеб Панченко</h1>
                 <h2>Unity Developer</h2>
@@ -115,11 +115,11 @@ p {
 .scroll {
     align-items: center;
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50vh);
+    bottom: 4vh;
+    left: 49%;
+    transform: translateX(-0vh);
     cursor: pointer;
-    animation: t-arrow-bottom 1.7s infinite ease;
+    animation: t-arrow-bottom 3s infinite ease;
 }
 
 .next-section {
