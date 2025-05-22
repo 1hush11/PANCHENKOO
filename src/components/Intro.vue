@@ -158,11 +158,12 @@ p {
 }
 
 .avatar {
-    width: 20vh;
-    height: 20vh;
-    border-radius: 100%;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
     object-fit: cover;
 }
+
 
 .text h2 {
     background-color: #8fbc83;
