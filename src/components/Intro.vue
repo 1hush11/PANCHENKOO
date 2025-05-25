@@ -5,7 +5,7 @@
                 <h1>Глеб Панченко</h1>
                 <h2>Unity Developer</h2>
                 <div class="scroll" @click="scrollToNext">
-                    <svg class="t-cover__arrow-svg" style="fill:#ffffff;" width="38.417px" height="18.592px"
+                    <svg style="fill:#fff;" width="38.417px" height="18.592px"
                         viewBox="0 0 38.417 18.592">
                         <path
                             d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z" />
@@ -30,8 +30,11 @@
         </div>
 
         <div class="tech-section">
-            <h3>Технологии, которыми я владею</h3>
-            <p>Unity, C#, VR (Oculus, OpenXR), Mirror, Shader Graph, <br>REST API, FMOD, Zenject, MVC, Git, Addressables
+            <h3>Кратко о себе</h3>
+            <p>
+                Разрабатываю игры и VR-приложения на Unity с 2022 года.<br/>
+                Специализируюсь на игровых механика и архитектуре проектов.<br/>
+                Руководил командами до 7 человек и вел проекты с нуля до продакшена.
             </p>
         </div>
     </section>
@@ -50,7 +53,7 @@ const scrollToNext = () => {
 <style scoped>
 .hero-section {
     height: 100vh;
-    background: url('@/assets/preview-2.png') center center / cover no-repeat;
+    background: url('@/assets/preview.jpg') center center / cover no-repeat;
     margin: 0;
     padding: 0;
     position: relative;
@@ -145,7 +148,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .state {
