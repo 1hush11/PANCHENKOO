@@ -14,7 +14,7 @@
                     <p class="project-p"><strong class="strong">Технологии:</strong> {{ project.technologies }}</p>
                     <p class="project-p" v-if="project.link">
                         <strong>Ссылка на проект: </strong>
-                        <a class="link" :href="project.link" target="_blank">{{ project.link }}</a>
+                        <a class="link" :href="project.link" target="_blank">{{ formatLink(project.link) }}</a>
                     </p>
                     </div>
                     
@@ -88,7 +88,7 @@ const projects = reactive([
         role: 'Team Lead',
         technologies: 'HDRP, Figma, Mirror, Rewired, Asset Bundles, Shader Graph, HLSL, WebSockets, TCP, REST API, JSON, Swagger, FMOD, Cinemachine, I2 Localization, Unity Profiler',
         link: 'https://sit-nebo.ru/',
-        preview: '/assets/sit-preview.jpeg',
+        preview: '/assets/sit-preview.jpg',
         images: [
             '/assets/image8.jpg',
             '/assets/image9.jpg',
@@ -119,6 +119,13 @@ const projects = reactive([
         currentIndex: 0,
     },
 ])
+
+function formatLink(url) {
+    return url
+    .replace(/^https?:\/\/(www\.)?/, '')
+    .replace(/^www\./, '')
+    .replace(/\/$/, '')
+}
 
 function prevSlide(projectIndex) {
     const project = projects[projectIndex]
@@ -154,7 +161,6 @@ function goToSlide(projectIndex, imageIndex) {
     font-size: 2rem;
     text-align: center;
     width: 100%;
-    margin-top: 1%;
 }
 
 .project-content {
@@ -166,6 +172,7 @@ function goToSlide(projectIndex, imageIndex) {
     margin: 2rem;
     background-color: #cccccc5f;
     width: 100vw;
+    margin-top: 5%;
 }
 
 .columns {
@@ -233,6 +240,7 @@ function goToSlide(projectIndex, imageIndex) {
     display: flex;
     align-items: center;
     justify-content: center;
+    aspect-ratio: 16 / 9;
 }
 
 .slider {
