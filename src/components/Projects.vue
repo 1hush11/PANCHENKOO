@@ -33,7 +33,7 @@
                 v-if="project.images.length > 1"
             >
                 <div class="slider-wrapper">
-                    <button class="arrow left" @click="prevSlide(index)"><</button>
+                    <button class="arrow left" @click="prevSlide(index)">‹</button>
 
                     <div class="slider">
                         <transition name="fade" mode="out-in">
@@ -45,7 +45,7 @@
                         </transition>
                     </div>
 
-                    <button class="arrow right" @click="nextSlide(index)">></button>
+                    <button class="arrow right" @click="nextSlide(index)">›</button>
                 </div>
 
 
@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 const projects = reactive([
     {
@@ -90,32 +90,31 @@ const projects = reactive([
         link: 'https://sit-nebo.ru/',
         preview: '/assets/sit-preview.jpeg',
         images: [
-            '/assets/image1.jpg',
-            '/assets/image2.jpg',
-            '/assets/image3.jpg',
-            '/assets/image4.jpg',
-            '/assets/image5.jpg',
-            '/assets/image6.jpg',
-            '/assets/image7.jpg',
+            '/assets/image8.jpg',
+            '/assets/image9.jpg',
+            '/assets/image10.jpg',
+            '/assets/image11.jpg',
+            '/assets/image12.jpg',
+            '/assets/image13.jpg',
         ],
         currentIndex: 0,
     },
     {
         title: 'Конструктор ванных комнат',
         duration: '5 месяцев',
-        description: "Приложение для сотрудников торговых сетей, позволяющее проектировать ванные комнаты с учётом индивидуальных пожеланий клиента. Интерактивный конструктор обеспечивает удобное размещение объектов с возможностью задания размеров, материалов и цветовых решений. Готовые проекты автоматически сохраняются на сервере и доступны для дальнейшей модерации. Реализована генерация технической документации для производства и возможность отправки проекта с сопроводительной информацией на электронную почту клиента. Дополнительный функционал включает отображение размеров изделий и переключение режимов камеры для удобного обзора сцены.",
+        description: "Приложение для сотрудников торговых сетей, позволяющее проектировать ванные комнаты с учётом индивидуальных пожеланий клиента. Интерактивный конструктор обеспечивает удобное размещение объектов с возможностью задания размеров, материалов и цветовых решений. \nГотовые проекты автоматически сохраняются на сервере и доступны для дальнейшей модерации. Реализована генерация технической документации для производства и возможность отправки проекта с сопроводительной информацией на электронную почту клиента. Дополнительный функционал включает отображение размеров изделий и переключение режимов камеры для удобного обзора сцены.",
         role: 'Team Lead',
         technologies: 'HDRP, Figma, Zenject, MVC, Addressables, Event Aggregator, REST API, JSON, Swagger',
         link: 'https://kupalapro.ru/',
         preview: '/assets/kupala-preview.jpg',
         images: [
-            '/assets/image8.png',
-            '/assets/image9.png',
-            '/assets/image10.png',
-            '/assets/image11.png',
-            '/assets/image12.png',
-            '/assets/image13.png',
-            '/assets/image14.png',
+            '/assets/image1.png',
+            '/assets/image2.png',
+            '/assets/image3.png',
+            '/assets/image4.png',
+            '/assets/image5.png',
+            '/assets/image6.png',
+            '/assets/image7.png',
         ],
         currentIndex: 0,
     },
@@ -139,10 +138,10 @@ function goToSlide(projectIndex, imageIndex) {
 
 <style scoped>
 .projects-section {
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5%;
 }
 
 .project {
@@ -154,33 +153,37 @@ function goToSlide(projectIndex, imageIndex) {
     font-size: 2rem;
     text-align: center;
     width: 100%;
+    margin-top: 1%;
 }
 
 .project-content {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 1.5rem;
     margin: 2rem;
+    background-color: #cccccc5f;
+    width: 100vw;
 }
 
 .columns {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    align-items: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 .project-info {
+    max-width: 800px;
     flex: 1 1 50%;
     min-width: 300px;
 }
 
 .carousel-section {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     margin: 1rem auto 3rem auto;
     display: flex;
     flex-direction: column;
@@ -190,6 +193,7 @@ function goToSlide(projectIndex, imageIndex) {
 
 .project-p {
     margin: 0.3rem 0;
+    font-family: "Exo 2";
 }
 
 .description {
@@ -199,6 +203,7 @@ function goToSlide(projectIndex, imageIndex) {
     padding: .2rem;
     margin-top: .7rem;
     margin-bottom: .7rem;
+    white-space: pre-wrap;
 }
 
 .strong {
@@ -222,7 +227,7 @@ function goToSlide(projectIndex, imageIndex) {
 .slider-wrapper {
     position: relative;
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -230,10 +235,11 @@ function goToSlide(projectIndex, imageIndex) {
 }
 
 .slider {
-    flex: 1;
+    flex: 0 1 auto;
     overflow: hidden;
     aspect-ratio: 16 / 9;
     position: relative;
+    max-width: 100%;
 }
 
 .slider img.slide {
@@ -243,18 +249,18 @@ function goToSlide(projectIndex, imageIndex) {
 }
 
 .arrow {
-    font-family: 'Inter', sans-serif;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: #8fbc83;
-    cursor: pointer;
     font-size: 2.5rem;
     background: transparent;
     border: none;
+    color: #8fbc83;
+    cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    z-index: 1;
+    user-select: none;
+    z-index: 2;
 }
 
 .arrow.left {
@@ -284,8 +290,7 @@ function goToSlide(projectIndex, imageIndex) {
 }
 
 .preview-image {
-    width: 100%;
-    border-radius: 10px;
+    width: 38em;
     cursor: pointer;
     aspect-ratio: 16 / 9;
     object-fit: cover;
@@ -293,10 +298,71 @@ function goToSlide(projectIndex, imageIndex) {
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
 }
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+@media (max-width: 768px) {
+    .project-content {
+        margin: 1rem 0;
+        padding: 1rem;
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+
+    .columns {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .project-info {
+        max-width: 100%;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .project-gallery {
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .preview-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .slider-wrapper {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .arrow {
+        font-size: 2rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .slider {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .arrow.left {
+        left: .5rem;
+    }
+
+    .arrow.right {
+        right: .5rem;
+    }
 }
 </style>

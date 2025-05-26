@@ -140,7 +140,6 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
     color: #222;
 }
 
