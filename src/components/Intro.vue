@@ -55,7 +55,7 @@ const scrollToNext = () => {
     height: 100vh;
     background: url('@/assets/preview.jpg') center center / cover no-repeat;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     position: relative;
     overflow: hidden;
 }
@@ -140,6 +140,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
     color: #222;
 }
 

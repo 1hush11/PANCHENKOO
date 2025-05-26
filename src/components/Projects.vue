@@ -141,6 +141,7 @@ function goToSlide(projectIndex, imageIndex) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
     margin-top: 5%;
 }
 
