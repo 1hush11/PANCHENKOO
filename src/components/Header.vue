@@ -1,15 +1,17 @@
 <template>
     <nav class="site-nav">
         <div class="nav-container fade-up">
-            <div class="burger" @click="toggleMenu">
-                ☰
+            <div class="burger" :class="{ open: isOpen }" @click="toggleMenu">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 7a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1z" fill="#CCC"/>
+                </svg>
             </div>
 
             <ul :class="['nav-links', { open: isOpen }]">
-                <li><a href="#hero" @click="closeMenu">В начало</a></li>
-                <li><a href="#about" @click="closeMenu">Знакомство</a></li>
-                <li><a href="#projects" @click="closeMenu">Проекты</a></li>
-                <li><a href="#details" @click="closeMenu">Обо мне</a></li>
+                <li><a @click="closeMenu" @click.prevent="scrollToSection('hero')">В начало</a></li>
+                <li><a @click="closeMenu" @click.prevent="scrollToSection('about')">Знакомство</a></li>
+                <li><a @click="closeMenu" @click.prevent="scrollToSection('projects')">Проекты</a></li>
+                <li><a @click="closeMenu" @click.prevent="scrollToSection('details')">Обо мне</a></li>
             </ul>
         </div>
     </nav>
@@ -28,6 +30,13 @@ const toggleMenu = () => {
 const closeMenu = () => {
     isOpen.value = false
 }
+
+const scrollToSection = (id) => {
+    const el = document.getElementById(id)
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+    }
+}
 </script>
 
 
@@ -38,9 +47,9 @@ const closeMenu = () => {
     left: 0;
     width: 100%;
     background: rgba(17, 17, 17, 0.95);
-    color: #fff;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .nav-container {
@@ -59,7 +68,7 @@ const closeMenu = () => {
     transition: transform 0.3s ease;
 }
 .nav-links a {
-    color: #8fbc83;
+    color: #CCC;
     text-decoration: none;
     font-weight: 600;
     font-family: "Exo 2", sans-serif;
@@ -73,33 +82,45 @@ const closeMenu = () => {
     font-size: 1.5rem;
     cursor: pointer;
     user-select: none;
+    transition: transform 0.3s ease;
+}
+.burger.open {
+    transform: scale(1.5);
 }
 
 @media (max-width: 768px) {
-    .burger {
-        display: block;
-        margin-left: auto;
+    .nav-container {
+        position: relative; 
+        justify-content: flex-end;
     }
 
-    .nav-links {
-        position: absolute;
-        top: 64px;
-        left: 0;
-        width: 100%;
-        background: rgba(17, 17, 17, 0.95);
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem 2rem;
-        transform: translateY(-200%);
-        opacity: 0;
-        pointer-events: none;
+    .burger {
+        display: block;
+        height: 28px;
+        margin: 0;
         align-items: flex-end;
     }
 
+    .nav-links {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+        padding: 0;
+        margin-top: 0.5rem;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
     .nav-links.open {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
+        max-height: 300px;
+        padding: 1rem 2rem;
     }
     .nav-links a:hover {
         color: #ffffff;

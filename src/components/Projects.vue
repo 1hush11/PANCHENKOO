@@ -32,7 +32,12 @@
                 class="carousel-section"
                 v-if="project.images.length > 1"
             >
-                <div class="slider-wrapper">
+            <div
+                class="slider-wrapper"
+                @touchstart.passive="onTouchStart($event, index)"
+                @touchmove.passive="onTouchMove($event, index)"
+                @touchend.passive="onTouchEnd($event, index)"
+            >
                     <button class="arrow left" @click="prevSlide(index)">‹</button>
 
                     <div class="slider">
@@ -73,11 +78,11 @@ const projects = reactive([
         role: 'Unity-разработчик',
         technologies: 'URP, Figma, AVPro, REST API, JSON, Swagger, Unity Profiler',
         link: 'https://altairika.com/',
-        preview: '/assets/Hall.jpg',
+        preview: '/assets/altairika-preview.jpg',
         images: [
-            '/assets/image15.jpg',
-            '/assets/image16.jpg',
-            '/assets/image17.jpg',
+            '/assets/altairika1.jpg',
+            '/assets/altairika2.jpg',
+            '/assets/altairika3.jpg',
         ],
         currentIndex: 0,
     },
@@ -90,12 +95,12 @@ const projects = reactive([
         link: 'https://sit-nebo.ru/',
         preview: '/assets/sit-preview.jpg',
         images: [
-            '/assets/image8.jpg',
-            '/assets/image9.jpg',
-            '/assets/image10.jpg',
-            '/assets/image11.jpg',
-            '/assets/image12.jpg',
-            '/assets/image13.jpg',
+            '/assets/sit1.jpg',
+            '/assets/sit2.jpg',
+            '/assets/sit3.jpg',
+            '/assets/sit4.jpg',
+            '/assets/sit5.jpg',
+            '/assets/sit6.jpg',
         ],
         currentIndex: 0,
     },
@@ -108,13 +113,13 @@ const projects = reactive([
         link: 'https://kupalapro.ru/',
         preview: '/assets/kupala-preview.jpg',
         images: [
-            '/assets/image1.png',
-            '/assets/image2.png',
-            '/assets/image3.png',
-            '/assets/image4.png',
-            '/assets/image5.png',
-            '/assets/image6.png',
-            '/assets/image7.png',
+            '/assets/kupala1.png',
+            '/assets/kupala2.png',
+            '/assets/kupala3.png',
+            '/assets/kupala4.png',
+            '/assets/kupala5.png',
+            '/assets/kupala6.png',
+            '/assets/kupala7.png',
         ],
         currentIndex: 0,
     },
@@ -127,19 +132,40 @@ function formatLink(url) {
     .replace(/\/$/, '')
 }
 
-function prevSlide(projectIndex) {
-    const project = projects[projectIndex]
-    project.currentIndex =
-    (project.currentIndex - 1 + project.images.length) % project.images.length
+function prevSlide(i) {
+    const p = projects[i]
+    p.currentIndex = (p.currentIndex - 1 + p.images.length) % p.images.length
 }
 
-function nextSlide(projectIndex) {
-    const project = projects[projectIndex]
-    project.currentIndex = (project.currentIndex + 1) % project.images.length
+function nextSlide(i) {
+    const p = projects[i]
+    p.currentIndex = (p.currentIndex + 1) % p.images.length
 }
 
-function goToSlide(projectIndex, imageIndex) {
-    projects[projectIndex].currentIndex = imageIndex
+function goToSlide(i, idx) {
+    projects[i].currentIndex = idx
+}
+
+function onTouchStart(event, i) {
+    projects[i].touchStartX = event.touches[0].clientX
+}
+
+function onTouchMove(event, i) {
+    projects[i].touchEndX = event.touches[0].clientX
+}
+
+function onTouchEnd(event, i) {
+    const p = projects[i]
+    const deltaX = p.touchStartX - p.touchEndX
+    const threshold = 50
+
+    if (deltaX > threshold) {
+        nextSlide(i)
+    } else if (deltaX < -threshold) {
+        prevSlide(i)
+    }
+    p.touchStartX = 0
+    p.touchEndX = 0
 }
 </script>
 
@@ -149,7 +175,7 @@ function goToSlide(projectIndex, imageIndex) {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 .project {
@@ -164,6 +190,7 @@ function goToSlide(projectIndex, imageIndex) {
 }
 
 .project-content {
+    padding: 0px 30px;
     display: flex;
     justify-content: center;
     align-items: center;

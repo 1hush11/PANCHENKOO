@@ -1,11 +1,11 @@
 <template>
-    <section id="about" class="about-section">
+<section id="about" class="about-section">
         <div class="about-content">
-            <div class="state">
+            <div class="state fade-up">
                 <img src="@/assets/avatar.jpg" alt="Глеб Панченко" class="avatar" />
-                <div class="text">
-                    <h2>Панченко Глеб</h2>
-                    <p class="experience">Опыт разработки на Unity — 2+ года</p>
+                <div class="text fade-up">
+                    <h2>Глеб Панченко</h2>
+                    <p class="experience">Опыт разработки в Unity — 2+ года</p>
                 </div>
             </div>
             <p class="intro">
@@ -15,8 +15,12 @@
         </div>
 
         <div class="tech-section">
-            <h3>Технологии, которыми я владею</h3>
-            <p>Unity, C#, VR (Oculus, OpenXR), Mirror, Shader Graph, <br>REST API, FMOD, Zenject, MVC, Git, Addressables</p>
+            <h3>Кратко о себе</h3>
+            <p>
+                Разрабатываю игры и VR-приложения на Unity с 2022 года.<br/>
+                Специализируюсь на игровых механика и архитектуре проектов.<br/>
+                Руководил командами до 7 человек и вел проекты с нуля до продакшена.
+            </p>
         </div>
     </section>
 </template>
@@ -25,14 +29,23 @@
 </script>
 
 <style scoped>
+
+.next-section {
+    height: 100vh;
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
 .about-section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #8fbc831a;
-    padding: 60px 20px;
+    padding: 20px;
     color: #222;
 }
 
@@ -40,23 +53,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .state {
     display: flex;
     align-items: center;
     justify-content: start;
+    text-align: center;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
 .avatar {
-    width: 20vh;
-    height: 20vh;
-    border-radius: 100%;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
     object-fit: cover;
 }
+
 
 .text h2 {
     background-color: #8fbc83;

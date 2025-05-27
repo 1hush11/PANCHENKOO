@@ -1,7 +1,7 @@
 <template>
     <section id="details" class="about-section">
         <div class="about-content fade-up">
-            <h1>О себе</h1>
+            <h1>Обо мне</h1>
             <p>
                 <strong class="strong">Unity-разработчик</strong>
                 с более чем двухлетним опытом в разработке VR и 3D приложений. 
@@ -90,7 +90,7 @@
 }
 
 .about-section h2 {
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     border-top: 1px solid #ccc;
     padding-top: 1rem;
@@ -101,7 +101,7 @@
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .strong {
