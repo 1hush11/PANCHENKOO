@@ -1,58 +1,55 @@
 <template>
     <section id="projects" class="projects-section fade-up">
-        <div v-for="(project, index) in projects" :key="index" class="project">
-            <div class="project-content">
+        <div
+            v-for="(project, index) in projects"
+            :key="index"
+            class="project"
+        >
+            <div
+                class="project-content"
+                :class="getProjectClass(project.title)"
+            >
                 <h3 class="project-title">{{ project.title }}</h3>
 
                 <div class="columns">
                     <div class="project-info">
-                    <p class="project-p"><strong class="strong">Роль:</strong> {{ project.role }}</p>
-                    <p class="project-p"><strong class="strong">Длительность проекта:</strong> {{ project.duration }}</p>
-                    <p class="description">
-                        <strong>Описание: </strong>{{ project.description }}
-                    </p>
-                    <p class="project-p"><strong class="strong">Технологии:</strong> {{ project.technologies }}</p>
-                    <p class="project-p" v-if="project.link">
-                        <strong>Ссылка на проект: </strong>
-                        <a class="link" :href="project.link" target="_blank">{{ formatLink(project.link) }}</a>
-                    </p>
+                        <p class="project-p"><strong class="strong">Роль:</strong> {{ project.role }}</p>
+                        <p class="project-p"><strong class="strong">Длительность проекта:</strong> {{ project.duration }}</p>
+                        <p class="description">
+                            <strong>Описание: </strong>{{ project.description }}
+                        </p>
+                        <p class="project-p"><strong class="strong">Технологии:</strong> {{ project.technologies }}</p>
+                        <p class="project-p" v-if="project.link">
+                            <strong>Ссылка на проект: </strong>
+                            <a class="link" :href="project.link" target="_blank">{{ formatLink(project.link) }}</a>
+                        </p>
                     </div>
-                    
+
                     <div class="project-gallery" v-if="project.images && project.images.length">
-                        <img
-                            :src="project.preview"
-                            class="preview-image"
-                            alt="preview"
-                        />
+                        <img :src="project.preview" class="preview-image" alt="preview" />
                     </div>
                 </div>
-
             </div>
-            <div
-                class="carousel-section"
-                v-if="project.images.length > 1"
-            >
-            <div
-                class="slider-wrapper"
-                @touchstart.passive="onTouchStart($event, index)"
-                @touchmove.passive="onTouchMove($event, index)"
-                @touchend.passive="onTouchEnd($event, index)"
-            >
-                    <button class="arrow left" @click="prevSlide(index)">‹</button>
 
+            <div class="carousel-section" v-if="project.images.length > 1">
+                <div
+                    class="slider-wrapper"
+                    @touchstart.passive="onTouchStart($event, index)"
+                    @touchmove.passive="onTouchMove($event, index)"
+                    @touchend.passive="onTouchEnd($event, index)"
+                >
+                    <button class="arrow left" @click="prevSlide(index)">‹</button>
                     <div class="slider">
                         <transition name="fade" mode="out-in">
-                        <img
-                            :src="project.images[project.currentIndex]"
-                            :key="project.currentIndex"
-                            class="slide"
-                        />
+                            <img
+                                :src="project.images[project.currentIndex]"
+                                :key="project.currentIndex"
+                                class="slide"
+                            />
                         </transition>
                     </div>
-
                     <button class="arrow right" @click="nextSlide(index)">›</button>
                 </div>
-
 
                 <div class="dots">
                     <span
@@ -66,6 +63,7 @@
         </div>
     </section>
 </template>
+
 
 <script setup>
 import { reactive } from 'vue'
@@ -124,6 +122,13 @@ const projects = reactive([
         currentIndex: 0,
     },
 ])
+
+function getProjectClass(title) {
+    if (title.includes('СИТ-НЕБО')) return 'sit-nebo'
+    if (title.includes('ванных')) return 'kupala'
+    if (title.includes('VR – кинотеатр')) return 'altairika'
+    return ''
+}
 
 function formatLink(url) {
     return url
@@ -340,6 +345,53 @@ function onTouchEnd(event, i) {
 .fade-leave-to {
     opacity: 0;
 }
+
+.project-content.sit-nebo {
+    --accent-color: #A6C8B1;
+    --text-highlight: #B37C6C;
+    --bg-description: #A6C8B166;
+    --arrow-color: #3C3C3C;
+}
+
+.project-content.kupala {
+    --accent-color: #C3A987;
+    --text-highlight: #A6A6A6;
+    --bg-description: #C3A98733;
+    --arrow-color: #2C2C2C;
+}
+
+.project-content.altairika {
+    --accent-color: #1756FF;
+    --text-highlight: #FF361B;
+    --bg-description: #1756FF44;
+    --arrow-color: #2C1F4C;
+}
+
+.project-title {
+    color: var(--text-highlight);
+}
+
+.description {
+    background-color: var(--bg-description);
+}
+
+.strong {
+    text-decoration: underline var(--accent-color);
+}
+
+.link {
+    color: var(--text-highlight);
+    text-decoration: underline;
+}
+
+.arrow {
+    color: var(--arrow-color);
+}
+
+.dot.active {
+    background: var(--accent-color);
+}
+
 
 @media (max-width: 768px) {
     .project-content {

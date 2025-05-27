@@ -215,7 +215,7 @@ const scrollToSection = id => {
 .mark {
     margin-top: 2rem;
     cursor: pointer;
-    color: #8fbc83;
+    color: #cccccc5f;
 }
 
 .icon {
