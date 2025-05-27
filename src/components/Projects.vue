@@ -233,12 +233,20 @@ function onTouchEnd(event, i) {
 
 .project-p {
     margin: 0.3rem 0;
+}
+
+.project-p strong {
     font-family: "Exo 2";
+    font-weight: 700;
+}
+.description strong {
+    font-family: "Exo 2";
+    font-weight: 700;
 }
 
 .description {
     font-family: "Exo 2";
-    font-weight: 600;
+    font-weight: 400;
     background-color: #8fbc8351;
     padding: .2rem;
     margin-top: .7rem;
@@ -247,6 +255,8 @@ function onTouchEnd(event, i) {
 }
 
 .strong {
+    font-family: "Exo 2";
+    font-weight: bold;
     margin: 0.3rem 0;
     text-decoration: underline #8fbc83;
 }
@@ -361,9 +371,9 @@ function onTouchEnd(event, i) {
 }
 
 .project-content.altairika {
-    --accent-color: #1756FF;
+    --accent-color: #177fff;
     --text-highlight: #FF361B;
-    --bg-description: #1756FF44;
+    --bg-description: rgb(255, 54, 27, 0.267);
     --arrow-color: #2C1F4C;
 }
 
@@ -380,7 +390,7 @@ function onTouchEnd(event, i) {
 }
 
 .link {
-    color: var(--text-highlight);
+    color: var(--accent-color);
     text-decoration: underline;
 }
 

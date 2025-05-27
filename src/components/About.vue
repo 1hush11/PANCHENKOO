@@ -1,5 +1,5 @@
 <template>
-<section id="about" class="about-section">
+    <section id="about" class="about-section">
         <div class="about-content">
             <div class="state fade-up">
                 <img src="@/assets/avatar.jpg" alt="Глеб Панченко" class="avatar" />
@@ -17,9 +17,9 @@
         <div class="tech-section">
             <h3>Кратко о себе</h3>
             <p>
-                Разрабатываю игры и VR-приложения на Unity с 2022 года.<br/>
-                Специализируюсь на игровых механика и архитектуре проектов.<br/>
-                Руководил командами до 7 человек и вел проекты с нуля до продакшена.
+                Unity-разработчик с опытом создания VR и 3D-приложений с 2022 года.<br/>
+                Специализируюсь на архитектуре, игровых механиках и кроссплатформенной разработке.<br/>
+                Вёл проекты с нуля до релиза и руководил командами до 7 человек.
             </p>
         </div>
     </section>
@@ -29,16 +29,6 @@
 </script>
 
 <style scoped>
-
-.next-section {
-    height: 100vh;
-    background-color: #1e1e1e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-}
-
 .about-section {
     min-height: 100vh;
     display: flex;
@@ -103,7 +93,7 @@
 
 .tech-section p {
     background-color: #8fbc83;
-    max-width: 700px;
+    max-width: 800px;
     padding: .5rem;
     font-size: 1rem;
     color: #444;

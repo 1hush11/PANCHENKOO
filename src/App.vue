@@ -47,7 +47,7 @@ onUnmounted(() => {
   <About/>
   <Projects/>
   <Details/>
-  <Footer/>
+  <!-- <Footer/> -->
 
   <button
     v-show="visible"
