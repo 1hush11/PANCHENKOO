@@ -1,34 +1,33 @@
 <template>
     <section id="projects" class="projects-section fade-up">
-        <div
-            v-for="(project, index) in projects"
-            :key="index"
-            class="project"
-        >
-            <div
-                class="project-content"
-                :class="getProjectClass(project.title)"
-            >
-                <h3 class="project-title">{{ project.title }}</h3>
+        <div v-for="(project, index) in projects" :key="index">
+            <div class="project-content" :class="getProjectClass(project.title)">
+            <h3 class="project-title">{{ project.title }}</h3>
 
-                <div class="columns">
-                    <div class="project-info">
-                        <p class="project-p"><strong class="strong">Роль:</strong> {{ project.role }}</p>
-                        <p class="project-p"><strong class="strong">Длительность проекта:</strong> {{ project.duration }}</p>
-                        <p class="description">
-                            <strong>Описание: </strong>{{ project.description }}
-                        </p>
-                        <p class="project-p"><strong class="strong">Технологии:</strong> {{ project.technologies }}</p>
-                        <p class="project-p" v-if="project.link">
-                            <strong>Ссылка на проект: </strong>
-                            <a class="link" :href="project.link" target="_blank">{{ formatLink(project.link) }}</a>
-                        </p>
-                    </div>
-
-                    <div class="project-gallery" v-if="project.images && project.images.length">
-                        <img :src="project.preview" class="preview-image" alt="preview" />
-                    </div>
+            <div class="columns">
+                <div class="project-info">
+                <div class="info-card">
+                    <p class="project-p"><strong>Роль:</strong> {{ project.role }}</p>
+                    <p class="project-p"><strong>Длительность проекта:</strong> {{ project.duration }}</p>
+                    <p class="project-p" v-if="project.link">
+                    <strong>Ссылка на проект: </strong>
+                    <a class="link" :href="project.link" target="_blank">{{ formatLink(project.link) }}</a>
+                    </p>
                 </div>
+
+                <div class="description-card">
+                    <p class="description"><strong>Описание:</strong> {{ project.description }}</p>
+                </div>
+                <div class="technologies">
+                <p class="project-p"><strong>Технологии:</strong></p>
+                <ul class="tech-list">
+                    <li v-for="(tech, i) in project.technologies.split(', ')" :key="i" class="tech-tag">{{ tech }}</li>
+                </ul>
+            </div>
+                </div>
+                <!-- <div class="project-gallery" v-if="project.preview">
+                <img :src="project.preview" class="preview-image" alt="preview" />
+                </div> -->
             </div>
 
             <div class="carousel-section" v-if="project.images.length > 1">
@@ -38,27 +37,24 @@
                     @touchmove.passive="onTouchMove($event, index)"
                     @touchend.passive="onTouchEnd($event, index)"
                 >
-                    <button class="arrow left" @click="prevSlide(index)">‹</button>
-                    <div class="slider">
-                        <transition name="fade" mode="out-in">
-                            <img
-                                :src="project.images[project.currentIndex]"
-                                :key="project.currentIndex"
-                                class="slide"
-                            />
-                        </transition>
-                    </div>
-                    <button class="arrow right" @click="nextSlide(index)">›</button>
+                <button class="arrow left" @click="prevSlide(index)">‹</button>
+                <div class="slider">
+                    <transition name="fade" mode="out-in">
+                    <img :src="project.images[project.currentIndex]" :key="project.currentIndex" class="slide" />
+                    </transition>
+                </div>
+                <button class="arrow right" @click="nextSlide(index)">›</button>
                 </div>
 
                 <div class="dots">
-                    <span
-                        v-for="(img, i) in project.images"
-                        :key="i"
-                        :class="{ dot: true, active: i === project.currentIndex }"
-                        @click="goToSlide(index, i)"
-                    ></span>
+                <span
+                    v-for="(img, i) in project.images"
+                    :key="i"
+                    :class="{ dot: true, active: i === project.currentIndex }"
+                    @click="goToSlide(index, i)"
+                ></span>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -78,6 +74,7 @@ const projects = reactive([
         link: 'https://altairika.com/',
         preview: '/assets/altairika-preview.jpg',
         images: [
+            '/assets/altairika-preview.jpg',
             '/assets/altairika1.jpg',
             '/assets/altairika2.jpg',
             '/assets/altairika3.jpg',
@@ -93,6 +90,7 @@ const projects = reactive([
         link: 'https://sit-nebo.ru/',
         preview: '/assets/sit-preview.jpg',
         images: [
+            '/assets/sit-preview.jpg',
             '/assets/sit1.jpg',
             '/assets/sit2.jpg',
             '/assets/sit3.jpg',
@@ -111,6 +109,7 @@ const projects = reactive([
         link: 'https://kupalapro.ru/',
         preview: '/assets/kupala-preview.jpg',
         images: [
+            '/assets/kupala-preview.jpg',
             '/assets/kupala1.png',
             '/assets/kupala2.png',
             '/assets/kupala3.png',
@@ -180,45 +179,117 @@ function onTouchEnd(event, i) {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: 10%;
-}
-
-.project {
-    border-bottom: 2px #CCC solid;
+    margin-top: 10px;
+    background-color: #cccccc5f;
+    border-top: 1px #ccc solid;
+    border-bottom: 1px #ccc solid;
 }
 
 .project-title {
-    color: #8fbc83;
+    margin-top: 1px;
     font-size: 2rem;
-    text-align: center;
-    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .project-content {
-    padding: 0px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1.5rem;
     margin: 2rem;
-    background-color: #cccccc5f;
-    width: 100vw;
-    margin-top: 5%;
 }
 
 .columns {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    align-items: center;
-    margin-bottom: 30px;
+    align-items: self-start;
+}
+
+.technologies {
+    padding: 0 1rem;
 }
 
 .project-info {
     max-width: 800px;
     flex: 1 1 50%;
     min-width: 300px;
+}
+
+.info-card,
+.description-card {
+    background-color: var(--card-bg, #ffffff);
+    padding: .5rem 1rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.072);
+    margin-bottom: .5rem;
+}
+
+.project-p {
+    margin: 0.3rem 0;
+    font-family: "Exo 2";
+}
+
+.project-p strong {
+    font-family: "Exo 2";
+    font-weight: bold;
+    margin: 0.3rem 0;
+}
+
+.link {
+    font-family: "Exo 2";
+    font-weight: bold;
+    color: var(--accent-color, #8fbc83);
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.link:hover,
+.link:focus {
+    color: var(--text-highlight, #555);
+    text-decoration-color: currentColor;
+}
+
+.link:active {
+    color: #000;
+    text-decoration: underline dotted;
+}
+
+
+.description {
+    font-family: "Exo 2";
+    font-weight: 400;
+    background-color: var(--bg-description, #f0f4f3);
+    border-left: 4px solid var(--accent-color, #8fbc83);
+    padding: .2rem;
+    margin-top: .7rem;
+    margin-bottom: .7rem;
+
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.description strong {
+    font-family: "Exo 2";
+    font-weight: 700;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: .6rem 2rem .5rem 0rem;
+}
+
+.tech-tag {
+    background-color: var(--accent-color, #8fbc83);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
 }
 
 .carousel-section {
@@ -229,41 +300,6 @@ function onTouchEnd(event, i) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.project-p {
-    margin: 0.3rem 0;
-}
-
-.project-p strong {
-    font-family: "Exo 2";
-    font-weight: 700;
-}
-.description strong {
-    font-family: "Exo 2";
-    font-weight: 700;
-}
-
-.description {
-    font-family: "Exo 2";
-    font-weight: 400;
-    background-color: #8fbc8351;
-    padding: .2rem;
-    margin-top: .7rem;
-    margin-bottom: .7rem;
-    white-space: pre-wrap;
-}
-
-.strong {
-    font-family: "Exo 2";
-    font-weight: bold;
-    margin: 0.3rem 0;
-    text-decoration: underline #8fbc83;
-}
-
-.link {
-    color: #8fbc83;
-    text-decoration: underline;
 }
 
 .project-gallery {
@@ -294,6 +330,7 @@ function onTouchEnd(event, i) {
 }
 
 .slider img.slide {
+    max-width: 800px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -306,7 +343,8 @@ function onTouchEnd(event, i) {
     font-size: 2.5rem;
     background: transparent;
     border: none;
-    color: #8fbc83;
+    color: var(--arrow-color, #8fbc83);
+
     cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -336,10 +374,6 @@ function onTouchEnd(event, i) {
     cursor: pointer;
 }
 
-.dot.active {
-    background: #8fbc83;
-}
-
 .preview-image {
     width: 38em;
     cursor: pointer;
@@ -361,6 +395,7 @@ function onTouchEnd(event, i) {
     --text-highlight: #B37C6C;
     --bg-description: #A6C8B166;
     --arrow-color: #3C3C3C;
+    --card-bg: #eaf5f0;
 }
 
 .project-content.kupala {
@@ -368,13 +403,15 @@ function onTouchEnd(event, i) {
     --text-highlight: #A6A6A6;
     --bg-description: #C3A98733;
     --arrow-color: #2C2C2C;
+    --card-bg: #f8f4ef;
 }
 
 .project-content.altairika {
-    --accent-color: #177fff;
-    --text-highlight: #FF361B;
-    --bg-description: rgb(255, 54, 27, 0.267);
+    --accent-color: #1a81ffd2;
+    --text-highlight: #a71f0d;
+    --bg-description: #177fff1f;
     --arrow-color: #2C1F4C;
+    --card-bg: #e7f1ff;
 }
 
 .project-title {
@@ -385,13 +422,8 @@ function onTouchEnd(event, i) {
     background-color: var(--bg-description);
 }
 
-.strong {
-    text-decoration: underline var(--accent-color);
-}
-
 .link {
     color: var(--accent-color);
-    text-decoration: underline;
 }
 
 .arrow {

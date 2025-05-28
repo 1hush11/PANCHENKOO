@@ -49,20 +49,24 @@ onUnmounted(() => {
   <Details/>
   <!-- <Footer/> -->
 
+  <transition name="fade">
   <button
     v-show="visible"
     @click="scrollToTop"
     class="back-to-top"
   >
-    <span class="arrow-up">‹</span>
+    <svg fill="#FFF" width="20" height="20" viewBox="0 -6 600 600">
+      <path d="M460 321L426 355 262 192 98 355 64 321 262 125 460 321Z" />
+    </svg>
   </button>
+</transition>
 </template>
 
 <style scoped>
 .back-to-top {
   position: fixed;
-  right: 20px;
-  bottom: 30px;
+  right: 50px;
+  bottom: 50px;
   border: none;
   background: rgba(17, 17, 17, 0.95);
 
@@ -71,18 +75,31 @@ onUnmounted(() => {
   color: #CCC;
   border-radius: 99%;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: opacity .3s ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-to-top[style*="display: none"] {
   opacity: 0;
 }
 
-.arrow-up {
-  display: inline-block;
-  transform-origin: center center;
-  transform: rotate(90deg);
-  font-size: 2em;
-  line-height: 1;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: scale(0.9);
 }
 </style>

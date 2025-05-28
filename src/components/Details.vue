@@ -55,7 +55,12 @@
             </div>
 
             <h2>Контакты — Глеб Панченко</h2>
-            <div class="link-group">
+            <ul class="contact-list">
+                <li><strong>Телефон:</strong> <a href="tel:+79191516697">+7 (919) 151-66-97</a></li>
+                <li><strong>Город:</strong> Уфа</li>
+                <li><strong>Гражданство:</strong> Россия (готов к переездам и командировкам)</li>
+            </ul>
+                        <div class="link-group">
                 <a href="mailto:work.pgv28@gmail.com">
                     <svg
                         class="icon"
@@ -170,7 +175,6 @@
                     <svg
                         class="icon icon-elegant"
                         viewBox="0 0 64 64"
-                        xmlns="http://www.w3.org/2000/svg"
                         aria-hidden="true"
                     >
                         <g>
@@ -204,11 +208,6 @@
                     Скачать резюме
                 </a>
             </div>
-            <ul class="contact-list">
-                <li><strong>Телефон:</strong> <a href="tel:+79191516697">+7 (919) 151-66-97</a></li>
-                <li><strong>Город:</strong> Уфа</li>
-                <li><strong>Гражданство:</strong> Россия (готов к переездам и командировкам)</li>
-            </ul>
         </div>
     </section>
 </template>
