@@ -255,7 +255,6 @@ function onTouchEnd(event, i) {
     text-decoration: underline dotted;
 }
 
-
 .description {
     font-family: "Exo 2";
     font-weight: 400;
@@ -412,6 +411,17 @@ function onTouchEnd(event, i) {
     --bg-description: #177fff1f;
     --arrow-color: #2C1F4C;
     --card-bg: #e7f1ff;
+}
+
+
+.project-content ::selection {
+    background-color: var(--accent-color, #2f4f2f);
+    color: white;
+}
+
+.project-info ::selection {
+    background-color: var(--text-highlight, #2f4f2f);
+    color: white;
 }
 
 .project-title {
