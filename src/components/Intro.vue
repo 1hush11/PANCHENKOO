@@ -93,13 +93,21 @@ p {
 }
 
 .scroll {
-    align-items: center;
     position: absolute;
     bottom: 4vh;
-    left:49%;
+    right: 0%;
     transform: translateX(-50%);
     cursor: pointer;
     animation: t-arrow-bottom 3s infinite ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.scroll-cover {
+    display: flex;
+    justify-content: center;
 }
 
 .next-section {
