@@ -110,9 +110,10 @@ const scrollToSection = (id) => {
         flex-direction: column;
         align-items: flex-end;
         gap: 1rem;
-        padding: 0;
+        padding: 1rem 2rem;
         margin-top: 0.5rem;
 
+        opacity: 0;
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
@@ -121,6 +122,7 @@ const scrollToSection = (id) => {
     .nav-links.open {
         max-height: 300px;
         padding: 1rem 2rem;
+        opacity: 1;
     }
     .nav-links a:hover {
         color: #ffffff;

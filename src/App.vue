@@ -55,7 +55,7 @@ onUnmounted(() => {
     @click="scrollToTop"
     class="back-to-top"
   >
-    <svg fill="#FFF" width="20" height="20" viewBox="0 0 500 600">
+    <svg fill="#FFF" width="20" height="20" viewBox="0 0 550 600">
       <path d="M460 321L426 355 262 192 98 355 64 321 262 125 460 321Z" />
     </svg>
   </button>
